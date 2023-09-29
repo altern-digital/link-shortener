@@ -82,7 +82,9 @@ router.get("/:alias/stats", async (req, res) => {
       alias: alias,
     },
     include: {
-      records: true,
+      _count: {
+        select: { records: true },
+      },
     },
   });
 

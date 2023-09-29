@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/app.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/app.js\""
+    "dev": "concurrently \"npm run build\" \"npx tsc --watch\" \"nodemon -q dist/app.js\""
   },
   "author": "",
   "license": "ISC",
