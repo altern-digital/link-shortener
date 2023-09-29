@@ -14,7 +14,7 @@ model Link {
   id           Int      @id @default(autoincrement())
   alias        String   @unique
   originalLink String
-  Record       Record[]
+  records      Record[]
 
   @@map("links")
 }
@@ -24,6 +24,18 @@ model Record {
   link      Link     @relation(fields: [linkId], references: [id])
   createdAt DateTime @default(now())
   linkId    Int
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
 
   @@map("records")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  records   Record[]
+
+  @@map("users")
 }
