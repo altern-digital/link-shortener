@@ -61,16 +61,10 @@ const createRecord = async (link: Link, user: User) => {
 };
 
 router.get("/:alias", async (req, res) => {
-  const userId = getUserId(req, res);
   const link = await getLinkByAlias(req.params.alias);
 
   if (link) {
-    const user = await getUserByUserId(userId);
-    const record = await createRecord(link, user);
-
-    res.send(
-      '<script>window.location.href="' + link.originalLink + '"</script>'
-    );
+    res.redirect(link.originalLink);
   } else {
     res.status(404).send("Not found");
   }
