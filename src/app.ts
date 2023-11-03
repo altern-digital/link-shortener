@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 app.use(morgan("short"));
 
-app.use("/", router);
+app.use("/link", router);
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
